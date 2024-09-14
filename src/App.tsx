@@ -10,43 +10,40 @@ export default function App() {
         time: 5 * 60,
     });
 
-    const { transcript, listening, resetTranscript, browserSupportsSpeechRecognition } =
-        useSpeechRecognition({
-            commands: [
-                {
-                    command: ["Stop", "Pause", "Halt"],
-                    callback: ({ command }) => {
-                        console.log({ command });
-                        setTimerState((s) => {
-                            if (s.status === "running") {
-                                return {
-                                    time: s.time,
-                                    status: "paused",
-                                };
-                            }
-                            return s;
-                        });
-                    },
-                    matchInterim: true,
+    const { transcript, resetTranscript, browserSupportsSpeechRecognition } = useSpeechRecognition({
+        commands: [
+            {
+                command: ["Stop", "Pause", "Halt"],
+                callback: () => {
+                    setTimerState((s) => {
+                        if (s.status === "running") {
+                            return {
+                                time: s.time,
+                                status: "paused",
+                            };
+                        }
+                        return s;
+                    });
                 },
-                {
-                    command: ["Weiter", "Los"],
-                    callback: ({ command }) => {
-                        console.log({ command });
-                        setTimerState((s) => {
-                            if (s.status === "paused") {
-                                return {
-                                    time: s.time,
-                                    status: "running",
-                                };
-                            }
-                            return s;
-                        });
-                    },
-                    matchInterim: true,
+                matchInterim: true,
+            },
+            {
+                command: ["Weiter", "Los"],
+                callback: () => {
+                    setTimerState((s) => {
+                        if (s.status === "paused") {
+                            return {
+                                time: s.time,
+                                status: "running",
+                            };
+                        }
+                        return s;
+                    });
                 },
-            ],
-        });
+                matchInterim: true,
+            },
+        ],
+    });
 
     if (!browserSupportsSpeechRecognition) {
         return <h1>Dieser Browser unterstützt keine Spracherkennung</h1>;
@@ -66,7 +63,7 @@ export default function App() {
         }));
     };
 
-    const unpause = () => {
+    const resume = () => {
         setTimerState((s) => ({
             ...s,
             status: "running",
@@ -113,7 +110,7 @@ export default function App() {
                 <>
                     <h2>Sag "Weiter" oder "Los" um den Timer wieder zu starten</h2>
                     <h3>Noch {formatSeconds(time)}</h3> <br />
-                    <button onClick={unpause}>Weiter</button>{" "}
+                    <button onClick={resume}>Weiter</button>{" "}
                     <button onClick={reset}>Neustart</button>
                 </>
             )}
