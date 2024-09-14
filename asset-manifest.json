@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/5-minute-dungeon-timer/static/css/main.fc5c2c69.css",
-    "main.js": "/5-minute-dungeon-timer/static/js/main.a2c2ae8d.js",
+    "main.js": "/5-minute-dungeon-timer/static/js/main.b4ade522.js",
     "index.html": "/5-minute-dungeon-timer/index.html",
     "main.fc5c2c69.css.map": "/5-minute-dungeon-timer/static/css/main.fc5c2c69.css.map",
-    "main.a2c2ae8d.js.map": "/5-minute-dungeon-timer/static/js/main.a2c2ae8d.js.map"
+    "main.b4ade522.js.map": "/5-minute-dungeon-timer/static/js/main.b4ade522.js.map"
   },
   "entrypoints": [
     "static/css/main.fc5c2c69.css",
-    "static/js/main.a2c2ae8d.js"
+    "static/js/main.b4ade522.js"
   ]
 }
