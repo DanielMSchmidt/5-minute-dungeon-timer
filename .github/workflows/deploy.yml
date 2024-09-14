@@ -1,17 +1,22 @@
 name: Deploy
 
+permissions:
+  pages: write
+
 on:
   push:
     branches: ["main"]
-  pull_request:
-    branches: ["main"]
-
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
-
-      - name: Build and Deploy React app to GitHub Pages
-        uses: omkartapale/react-deployment-gh-pages@v1.0.0
+      - uses: actions/checkout@v4
+      - name: Use Node.js 22.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.x
+          cache: "npm"
+      - run: npm ci
+      - run: npm run build --if-present
+      - run: npm run deploy
