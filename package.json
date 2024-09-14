@@ -2,7 +2,7 @@
   "name": "react-typescript",
   "version": "1.0.0",
   "description": "Timer for the game 5 Minute Dungeon",
-  "homepage": "https://danielmschmidt.github.io/5-minute-dungeon-timer",
+  "homepage": "http://danielmschmidt.github.io/5-minute-dungeon-timer",
   "keywords": [
     "typescript",
     "react",
