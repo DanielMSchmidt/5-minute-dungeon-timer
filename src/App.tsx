@@ -96,7 +96,6 @@ export default function App() {
     return (
         <div className="App">
             <h1>5-Minuten Dungeon Timer</h1>
-            {}
 
             {status === "ready" ? (
                 <button onClick={start}>Start</button>
